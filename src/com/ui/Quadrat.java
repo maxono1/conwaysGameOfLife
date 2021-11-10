@@ -39,5 +39,14 @@ public class Quadrat {
 
     public void darstellenFuellung(Interaktionsbrett ib){
         // ka wie der shit geht bruderrrr
+        //vlt noch was übergeben was zeigt ob das schon ausgefüllt ist
+        //sonst loesche objekt, nvm um zu löschen einfach von neu machen jedes mal, und dann diese methode nicht aufrufen
+
+        //fuellung
+        for(int i = 0; i<seitenlaenge;i++) {
+            for (int j = 0; j < seitenlaenge; j++) {
+                ib.neuerPunkt(i, j);
+            }
+        }
     }
 }
