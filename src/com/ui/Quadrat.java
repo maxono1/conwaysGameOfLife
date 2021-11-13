@@ -43,8 +43,8 @@ public class Quadrat {
         //sonst loesche objekt, nvm um zu löschen einfach von neu machen jedes mal, und dann diese methode nicht aufrufen
 
         //fuellung
-        for(int i = 0; i<seitenlaenge;i++) {
-            for (int j = 0; j < seitenlaenge; j++) {
+        for(int i = x; i<seitenlaenge+x;i++) {
+            for (int j = y; j < seitenlaenge+y; j++) {
                 ib.neuerPunkt(i, j);
             }
         }

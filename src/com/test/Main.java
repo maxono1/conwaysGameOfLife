@@ -1,44 +1,91 @@
 package com.test;
 
 import com.ui.Quadrat;
+import com.util.EinUndAusgabe;
 import com.util.Interaktionsbrett;
+import com.ui.SpielfeldDarstellung;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+
+
 
 public class Main {
+
     public static void main(String[] args){
+        EinUndAusgabe robot = new EinUndAusgabe();
 
-        Interaktionsbrett ib = new Interaktionsbrett();
 
-        int seitenlaenge = 15;
-        int margin = 50;
-        int anzahlQuadrateProZeile = 30;
-        ArrayList<Quadrat> alleQuadrate = new ArrayList<Quadrat>();
-
-        for(int i = margin; i<(anzahlQuadrateProZeile*seitenlaenge)+margin;i+=seitenlaenge){
-            for(int j= margin; j<(anzahlQuadrateProZeile*seitenlaenge)+margin;j+=seitenlaenge){
-                //neues Quadrat machen und da die methode aufrufen
-                Quadrat bruh = new Quadrat(i,j,seitenlaenge);
-                bruh.darstellenRahmen(ib);
-                alleQuadrate.add(bruh);
+        SpielfeldDarstellung spiel = new SpielfeldDarstellung( new Interaktionsbrett() );
+        boolean[][] feld = new boolean[20][20];
+        for(int i = 0; i < feld.length;i++){
+            for(int j = 0; j < feld.length;j++){
+                if(i==feld.length-1){
+                    feld[i][j]=true;
+                }
             }
         }
 
-        /*
-        for(int y = 10; y < seitenlaenge; y+=10){
-            ib.neueLinie(y,1,y,seitenlaenge);
-            ib.neueLinie(1,y,seitenlaenge,y);
-        }*/
-
-        /*
-        //fuellung
-        for(int i = 1; i<10;i++) {
-            for(int j = 1; j<10;j++){
-                ib.neuerPunkt(i,j);
-            }
-        }*/
-
-
-
+        spiel.spielfeldDarstellen(feld);
+        robot.leseString();
+        spiel.abwischen();
+        robot.leseString();
+        spiel.spielfeldDarstellen(feld);
     }
 }
+
+//Code graveyard
+//
+//Interaktionsbrett ib = new Interaktionsbrett();
+//
+//LinkedHashSet<Quadrat> alleQuadrate = new LinkedHashSet<>();
+//
+//
+// Iterator<Quadrat> itr = alleQuadrate.iterator();
+//       // if(itr.hasNext())
+//        //    itr.next().darstellenFuellung(ib);
+//
+//        /*
+//        for(int y = 10; y < seitenlaenge; y+=10){
+//            ib.neueLinie(y,1,y,seitenlaenge);
+//            ib.neueLinie(1,y,seitenlaenge,y);
+//        }*/
+
+/**
+ int x = 0;
+ int y = 0;
+
+ for(int i = margin; i < ( anzahlQuadrateProZeile * seitenlaenge )+margin;i+=seitenlaenge){
+ y=0;
+ for(int j= margin; j<( anzahlQuadrateProZeile * seitenlaenge )+margin;j+=seitenlaenge){
+ //neues Quadrat machen und da die methode aufrufen
+ Quadrat bruh = new Quadrat(i,j,seitenlaenge);
+ bruh.darstellenRahmen(ib);
+ alleQuadrate[x][y] = bruh;
+ //alleQuadrate.add(bruh);
+ y++;
+ }
+ x++;
+ }
+
+ */
+
+/*
+* int seitenlaenge = 15;
+        int anzahlQuadrateProZeile = 30;
+        Quadrat[][] alleQuadrate = new Quadrat[anzahlQuadrateProZeile][anzahlQuadrateProZeile];
+
+
+        for(int i = 0; i < anzahlQuadrateProZeile;i++){
+            for(int j = 0; j < anzahlQuadrateProZeile;j++){
+
+                //erstes quadrat margin weit weg vom rand, 0*seitenlaenge also 0px extra
+                //zweites quadrat margin weit weg + 1*seitenlaenge also zb 15px weiter rechts
+                Quadrat bruh = new Quadrat((i*seitenlaenge)+SpielfeldDarstellung.margin,(j*seitenlaenge)+SpielfeldDarstellung.margin,seitenlaenge);
+                bruh.darstellenRahmen(ib);
+                alleQuadrate[i][j] = bruh;
+            }
+
+        }
+* */
