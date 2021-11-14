@@ -1,6 +1,7 @@
 package com.test;
 
 import com.ui.Quadrat;
+import com.ui.Steuerung;
 import com.util.EinUndAusgabe;
 import com.util.Interaktionsbrett;
 import com.ui.SpielfeldDarstellung;
@@ -14,24 +15,8 @@ import java.util.LinkedHashSet;
 public class Main {
 
     public static void main(String[] args){
-        EinUndAusgabe robot = new EinUndAusgabe();
-
-
-        SpielfeldDarstellung spiel = new SpielfeldDarstellung( new Interaktionsbrett() );
-        boolean[][] feld = new boolean[20][20];
-        for(int i = 0; i < feld.length;i++){
-            for(int j = 0; j < feld.length;j++){
-                if(i==feld.length-1){
-                    feld[i][j]=true;
-                }
-            }
-        }
-
-        spiel.spielfeldDarstellen(feld);
-        robot.leseString();
-        spiel.abwischen();
-        robot.leseString();
-        spiel.spielfeldDarstellen(feld);
+        Steuerung steuerung = new Steuerung();
+        steuerung.startDesSpiels();
     }
 }
 
@@ -52,7 +37,7 @@ public class Main {
 //            ib.neueLinie(1,y,seitenlaenge,y);
 //        }*/
 
-/**
+/*
  int x = 0;
  int y = 0;
 
@@ -88,4 +73,26 @@ public class Main {
             }
 
         }
+* */
+
+/*
+* EinUndAusgabe robot = new EinUndAusgabe();
+
+
+        SpielfeldDarstellung spiel = new SpielfeldDarstellung( new Interaktionsbrett() );
+        boolean[][] feld = new boolean[20][20];
+        for(int i = 0; i < feld.length;i++){
+            for(int j = 0; j < feld.length;j++){
+                if(i==feld.length-1){
+                    feld[i][j]=true;
+                }
+            }
+        }
+
+        spiel.spielfeldDarstellen(feld);
+        robot.leseString();
+        spiel.abwischen();
+        robot.leseString();
+        spiel.spielfeldDarstellen(feld);
+*
 * */

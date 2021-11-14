@@ -3,7 +3,7 @@ package com.ui;
 import com.util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
-    public static final int DarstellungsBereichSeitenlaenge = 500;
+    public static final int DarstellungsBereichSeitenlaenge = 800;
     public static final int margin = 30;
     //der bereich(ausgenommen margin) ist der darstellungsbereich
     //10x10 zellen -> jede zelle 30x30
@@ -29,7 +29,7 @@ public class SpielfeldDarstellung {
         int seitenlaenge = DarstellungsBereichSeitenlaenge/anzahlQuadrateProZeile;
 
 
-        Quadrat[][] alleQuadrate = new Quadrat[anzahlQuadrateProZeile][anzahlQuadrateProZeile];
+        //Quadrat[][] alleQuadrate = new Quadrat[anzahlQuadrateProZeile][anzahlQuadrateProZeile];
 
 
         for(int i = 0; i < anzahlQuadrateProZeile;i++){
@@ -40,7 +40,7 @@ public class SpielfeldDarstellung {
                 Quadrat bruh = new Quadrat((i*seitenlaenge)+margin,(j*seitenlaenge)+margin,seitenlaenge);
 
 
-                alleQuadrate[i][j] = bruh;
+                //alleQuadrate[i][j] = bruh;
                 bruh.darstellenRahmen(ib);
 
                 //falls zelle bzw quadrat bewohnt, dann ausfuellen

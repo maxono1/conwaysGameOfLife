@@ -16,17 +16,26 @@ public class Steuerung implements BeiAenderung {
 
     public void startDesSpiels(){
         initialisierung();
+        int anzahlZellen = nutzerEingabe.anzahlZellenDesSpielfelds();
+        int wahrscheinlichkeit = nutzerEingabe.wahrscheinlichkeitDerBesiedlung();
 
-        simulation = new Simulator();
-        simulation.berechneAnfangsGeneration(nutzerEingabe.anzahlZellenDesSpielfelds(),
-                nutzerEingabe.wahrscheinlichkeitDerBesiedlung());
+        simulation.berechneAnfangsGeneration(anzahlZellen,wahrscheinlichkeit);
+        //simulation.specialAnfangsGeneration(anzahlZellen);
 
 
+        while(true){
+            int anzahlSimulationsSchritte = nutzerEingabe.anzahlDerSimulationsschritte();
+            if(anzahlSimulationsSchritte < 0) break;
+            simulation.berechnefolgeGeneration(anzahlSimulationsSchritte);
+        }
+
+        System.out.println("Ende des Programms");
     }
 
     private void initialisierung(){
         spielfeldDarstellung = new SpielfeldDarstellung( new Interaktionsbrett());
         nutzerEingabe = new NutzerEingabe( new EinUndAusgabe() );
+        simulation = new Simulator();
 
         simulation.anmeldenFuerAktualisierungBeiAenderung(this);
         //beim simulation objekt anmelden?
@@ -34,7 +43,7 @@ public class Steuerung implements BeiAenderung {
 
     public void aktualisiere(boolean[][] neueGeneration){
         //hier Spielfeld darstellung methoden benutzen
-
+        spielfeldDarstellung.abwischen();
         spielfeldDarstellung.spielfeldDarstellen(neueGeneration);
 
     }
