@@ -52,7 +52,7 @@ public class Simulator implements Simulation{
                     //oder
                     //j == 0 oder j == spielfeld.length-1
                     int anzahlNachbarn = 0;
-
+/*
                     //diese booleans sagen ob die jetzige zelle an irgendeinem rand ist
                     boolean left = false;
                     boolean right = false;
@@ -83,6 +83,8 @@ public class Simulator implements Simulation{
                     if((!bottom)&&spielfeld[i][c+1]) anzahlNachbarn++;
                     //rechts unten
                     if((!bottom)&&(!right)&&spielfeld[i+1][c+1]) anzahlNachbarn++;
+*/
+                    anzahlNachbarn = anzahlNachbarn(i,c);
 
                     if( anzahlNachbarn == 3 ||(spielfeld[i][c] && anzahlNachbarn == 2)) neuesSpielfeld[i][c] = true;
                     else neuesSpielfeld[i][c] = false;
@@ -97,6 +99,18 @@ public class Simulator implements Simulation{
             if( beiAenderung != null ) beiAenderung.aktualisiere(spielfeld);
         }
 
+    }
+
+    public int anzahlNachbarn(int x, int y){
+        int anzahlNachbarn = 0;
+
+        for(int i=x-1;i<=x+1;i++){
+            for(int j=y-1;j<=y+1;j++)
+                if(j>=0 && i>=0 && !(i==x && j==y) && i< spielfeld.length &&j< spielfeld.length&&spielfeld[i][j]){
+                    anzahlNachbarn++;
+                }
+        }
+        return anzahlNachbarn;
     }
 
     @Override

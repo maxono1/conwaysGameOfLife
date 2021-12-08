@@ -25,11 +25,16 @@ public class Steuerung implements BeiAenderung {
 
         while(true){
             int anzahlSimulationsSchritte = nutzerEingabe.anzahlDerSimulationsschritte();
-            if(anzahlSimulationsSchritte < 0) break;
+            if(anzahlSimulationsSchritte < 0){
+
+                break;
+            }
+
             simulation.berechnefolgeGeneration(anzahlSimulationsSchritte);
         }
 
         System.out.println("Ende des Programms");
+        System.exit(0);
     }
 
     private void initialisierung(){
